@@ -6,7 +6,7 @@
 /*   By: obelaizi <obelaizi@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/09 22:35:56 by obelaizi          #+#    #+#             */
-/*   Updated: 2022/10/10 17:15:55 by obelaizi         ###   ########.fr       */
+/*   Updated: 2022/10/21 02:59:57 by obelaizi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,8 @@ int	ft_atoi(const char *str)
 
 	result = 0;
 	sign = 1;
-	while (*str < 33 && *str)
+	while ((*str == ' ' || *str == '\t' || *str == '\n' || *str == '\v'
+			|| *str == '\f' || *str == '\r') && *str)
 		str++;
 	if (*str == '+' || *str == '-')
 	{

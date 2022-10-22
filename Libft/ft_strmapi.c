@@ -1,34 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncmp.c                                       :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: obelaizi <obelaizi@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/08 14:05:50 by obelaizi          #+#    #+#             */
-/*   Updated: 2022/10/22 02:07:03 by obelaizi         ###   ########.fr       */
+/*   Created: 2022/10/18 00:47:40 by obelaizi          #+#    #+#             */
+/*   Updated: 2022/10/22 01:46:41 by obelaizi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-//23-- cas dyal ("", "test", 2)
-int	ft_strncmp(const char *s1, const char *s2, size_t size)
-{
-	unsigned char	*str1;
-	unsigned char	*str2;
 
-	str1 = (unsigned char *)s1;
-	str2 = (unsigned char *)s2;
-	if (!size)
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
+{
+	char	*str;
+	int		i;
+
+	i = 0;
+	if (!s)
 		return (0);
-	if (!*str1 || !*str2)
-		return (*str1 - *str2);
-	while (size-- && (*str1 || *str2))
+	str = ft_strdup(s);
+	if (!str)
+		return (0);
+	while (str[i])
 	{
-		if (*str1 != *str2)
-			return (*str1 - *str2);
-		str1++;
-		str2++;
+		str[i] = f(i, s[i]);
+		i++;
 	}
-	return (0);
+	return (str);
 }

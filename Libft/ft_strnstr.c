@@ -6,7 +6,7 @@
 /*   By: obelaizi <obelaizi@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/09 21:27:01 by obelaizi          #+#    #+#             */
-/*   Updated: 2022/10/09 22:26:33 by obelaizi         ###   ########.fr       */
+/*   Updated: 2022/10/21 18:34:40 by obelaizi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,10 @@ char	*ft_strnstr(char *str, char *finder, size_t n)
 {
 	size_t	count;
 
+	if ((!str || !finder) && !n)
+		return (NULL);
 	count = 0;
-	if (*finder == 0)
+	if (!(*finder))
 		return (str);
 	while (*str && count < n)
 	{

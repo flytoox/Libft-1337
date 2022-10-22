@@ -1,34 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncmp.c                                       :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: obelaizi <obelaizi@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/08 14:05:50 by obelaizi          #+#    #+#             */
-/*   Updated: 2022/10/22 02:07:03 by obelaizi         ###   ########.fr       */
+/*   Created: 2022/10/18 01:14:59 by obelaizi          #+#    #+#             */
+/*   Updated: 2022/10/18 01:17:04 by obelaizi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-//23-- cas dyal ("", "test", 2)
-int	ft_strncmp(const char *s1, const char *s2, size_t size)
-{
-	unsigned char	*str1;
-	unsigned char	*str2;
 
-	str1 = (unsigned char *)s1;
-	str2 = (unsigned char *)s2;
-	if (!size)
-		return (0);
-	if (!*str1 || !*str2)
-		return (*str1 - *str2);
-	while (size-- && (*str1 || *str2))
+void	ft_putnbr_fd(int nb, int fd)
+{
+	int		i;
+	char	c;
+
+	i = 1;
+	if (nb == -2147483648)
+		write(fd, "-2147483648", 11);
+	else if (nb < 0)
 	{
-		if (*str1 != *str2)
-			return (*str1 - *str2);
-		str1++;
-		str2++;
+		write(fd, "-", 1);
+		ft_putnbr_fd(-nb, fd);
 	}
-	return (0);
+	else if (nb >= 0 && nb <= 9)
+	{
+		c = nb + 48;
+		write(fd, &c, 1);
+	}
+	else
+	{
+		ft_putnbr_fd(nb / 10, fd);
+		ft_putnbr_fd(nb % 10, fd);
+	}
 }
