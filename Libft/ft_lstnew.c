@@ -6,7 +6,7 @@
 /*   By: obelaizi <obelaizi@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/21 17:18:18 by obelaizi          #+#    #+#             */
-/*   Updated: 2022/10/22 05:33:03 by obelaizi         ###   ########.fr       */
+/*   Updated: 2022/11/02 18:35:57 by obelaizi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,10 @@ t_list	*ft_lstnew(void *content)
 {
 	t_list	*node;
 
-	node = malloc(sizeof(size_t));
+	node = malloc(sizeof(t_list));
 	if (!node)
 		return (0);
 	node->content = content;
-	node->next = NULL;
+	node->next = 0;
 	return (node);
 }

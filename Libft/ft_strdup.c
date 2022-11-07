@@ -6,7 +6,7 @@
 /*   By: obelaizi <obelaizi@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 19:32:55 by obelaizi          #+#    #+#             */
-/*   Updated: 2022/10/13 23:19:02 by obelaizi         ###   ########.fr       */
+/*   Updated: 2022/10/31 21:46:03 by obelaizi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 char	*ft_strdup(const char *src)
 {
-	int		i;
-	int		j;
-	char	*cp;
+	size_t		i;
+	int			j;
+	char		*cp;
 
 	j = 0;
 	i = ft_strlen(src);

@@ -6,13 +6,13 @@
 /*   By: obelaizi <obelaizi@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/17 00:34:32 by obelaizi          #+#    #+#             */
-/*   Updated: 2022/10/17 01:46:27 by obelaizi         ###   ########.fr       */
+/*   Updated: 2022/11/03 13:53:56 by obelaizi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	count(int n)
+static int	count(int n)
 {
 	int	result;
 
@@ -55,8 +55,3 @@ char	*ft_itoa(int n)
 	}
 	return (s);
 }
-
-// int main()
-// {
-// 	printf("%s", ft_itoa(10000000000000000));
-// }

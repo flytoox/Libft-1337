@@ -6,7 +6,7 @@
 /*   By: obelaizi <obelaizi@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/09 11:27:43 by obelaizi          #+#    #+#             */
-/*   Updated: 2022/10/13 17:02:00 by obelaizi         ###   ########.fr       */
+/*   Updated: 2022/11/02 13:01:53 by obelaizi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 void	*ft_memcpy(void *d, const void *s, size_t n)
 {
-	unsigned int	i;
-	char			*dest;
-	char			*src;
+	size_t	i;
+	char	*dest;
+	char	*src;
 
 	src = (char *)s;
 	dest = (char *)d;
@@ -30,8 +30,3 @@ void	*ft_memcpy(void *d, const void *s, size_t n)
 	}
 	return (d);
 }
-// int main ()
-// {
-// 	char *s=0;
-// 	printf("%s",memcpy(NULL, NULL, 4));
-// }

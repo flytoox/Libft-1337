@@ -6,7 +6,7 @@
 /*   By: obelaizi <obelaizi@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/08 14:05:42 by obelaizi          #+#    #+#             */
-/*   Updated: 2022/10/13 17:44:03 by obelaizi         ###   ########.fr       */
+/*   Updated: 2022/11/02 13:03:15 by obelaizi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,12 @@
 
 char	*ft_strchr(const char *s, int c)
 {
-	while ((*s && c) || !c)
+	while (1)
 	{
-		if (c == *s)
+		if (*s == (char)c)
 			return ((char *)s);
+		if (!*s)
+			return (0);
 		s++;
 	}
-	return (0);
 }

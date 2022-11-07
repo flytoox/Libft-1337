@@ -6,7 +6,7 @@
 /*   By: obelaizi <obelaizi@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 00:47:40 by obelaizi          #+#    #+#             */
-/*   Updated: 2022/10/22 01:46:41 by obelaizi         ###   ########.fr       */
+/*   Updated: 2022/11/01 18:09:05 by obelaizi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 	int		i;
 
 	i = 0;
-	if (!s)
+	if (!s || !f)
 		return (0);
 	str = ft_strdup(s);
 	if (!str)

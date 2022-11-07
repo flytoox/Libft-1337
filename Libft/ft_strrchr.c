@@ -6,7 +6,7 @@
 /*   By: obelaizi <obelaizi@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/08 13:56:06 by obelaizi          #+#    #+#             */
-/*   Updated: 2022/10/13 17:55:42 by obelaizi         ###   ########.fr       */
+/*   Updated: 2022/11/04 11:42:52 by obelaizi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,10 @@ char	*ft_strrchr(const char *str, int c)
 {
 	int	len;
 
-	len = ft_strlen(str);
+	len = (int)ft_strlen(str);
 	while (len >= 0)
 	{
-		if (c == str[len])
+		if ((char)c == str[len])
 			break ;
 		len--;
 	}

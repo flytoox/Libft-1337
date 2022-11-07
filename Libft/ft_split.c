@@ -6,43 +6,57 @@
 /*   By: obelaizi <obelaizi@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/16 02:39:00 by obelaizi          #+#    #+#             */
-/*   Updated: 2022/10/21 03:40:27 by obelaizi         ###   ########.fr       */
+/*   Updated: 2022/11/03 13:54:26 by obelaizi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	count_words(char const *s, char c)
+static int	skip_c(const char *s, char c)
+{
+	int	i;
+
+	i = 0;
+	while (s[i] && s[i] == c)
+		i++;
+	return (i);
+}
+
+static void	free_str(char **str, int i)
+{
+	while (i >= 0)
+	{
+		free(str[i]);
+		i--;
+	}
+	free(str);
+}
+
+static int	count_words(char const *s, char c, int *i)
 {
 	int	total;
-	int	check;
 
-	check = 1;
-	total = 0;
-	if (s == 0)
-		return (0);
-	while (*s == c)
+	total = 1;
+	*i = 0;
+	while (*s && *s == c)
 		s++;
+	if (!(*s))
+		return (0);
 	while (*s)
 	{
-		if (check)
-		{
-			total = 1;
-			check = 0;
-		}
-		if (*s == c && *(s + 1) != c && *(s + 1))
+		if (*s == c && *(s + 1) && *(s + 1) != c)
 			total++;
 		s++;
 	}
 	return (total);
 }
 
-int	word_size(const char *s, char c)
+static int	word_size(const char *s, char c)
 {
 	int	size;
 
 	size = 0;
-	while (*s != c)
+	while (*s && *s != c)
 	{
 		size++;
 		s++;
@@ -57,24 +71,24 @@ char	**ft_split(char const *s, char c)
 	char	**str;
 	int		j;
 
-	i = 0;
-	words = count_words(s, c);
-	str = malloc(sizeof(str) * (words + 1));
-	if (!str || !s)
+	if (!s)
+		return (0);
+	words = count_words(s, c, &i);
+	str = malloc(sizeof(char *) * (words + 1));
+	if (!str)
 		return (0);
 	while (*s && i < words)
 	{
 		j = 0;
-		while (*s == c)
-			s++;
+		s = skip_c(s, c) + s;
 		str[i] = malloc(word_size(s, c) + 1);
-		while (*s != c && *s)
-		{
-			str[i][j++] = *s;
-			s++;
-		}
+		if (!str[i])
+			return (free_str(str, i), NULL);
+		while (*s && *s != c)
+			str[i][j++] = *(s)++;
 		str[i++][j] = 0;
-		s++;
+		if (*s)
+			s++;
 	}
 	return (str[i] = 0, str);
 }

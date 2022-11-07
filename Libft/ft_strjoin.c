@@ -6,7 +6,7 @@
 /*   By: obelaizi <obelaizi@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 00:39:06 by obelaizi          #+#    #+#             */
-/*   Updated: 2022/10/22 05:04:13 by obelaizi         ###   ########.fr       */
+/*   Updated: 2022/11/05 21:12:09 by obelaizi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 char	*ft_strjoin(char const *s1, char const *s2)
 {
 	char	*result;
-	int		size;
-	int		i;
+	size_t	size;
+	size_t	i;
 	int		j;
 
 	if (!s1 || !s2)
@@ -34,19 +34,9 @@ char	*ft_strjoin(char const *s1, char const *s2)
 			result[i] = s1[i];
 			i++;
 		}
+		if (!(*s2))
+			break ;
 		result[i++] = s2[j++];
 	}
-	result[i] = 0;
-	return (result);
+	return (result[i] = 0, result);
 }
-
-// int main()
-// {
-// 	char	s1[] = "lorem ipsum";
-// 	char	s2[] = "dolor sit amet";
-// 	char	*strjoin;
-// 	s2[0] = '\0';
-// 	if (!(strjoin = ft_strjoin(s1, s2)))
-// 		printf("test");
-// 	printf("%s", strjoin);
-// }
